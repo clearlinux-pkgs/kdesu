@@ -6,7 +6,7 @@
 #
 Name     : kdesu
 Version  : 5.52.0
-Release  : 6
+Release  : 7
 URL      : https://download.kde.org/stable/frameworks/5.52/kdesu-5.52.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.52/kdesu-5.52.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.52/kdesu-5.52.0.tar.xz.sig
@@ -24,14 +24,6 @@ BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev lib
 Maintainer: Adriaan de Groot <groot@kde.org>
 Maintainer: kdesu was maintained by Alan Eldridge until his
 death in 2003.
-
-%package abi
-Summary: abi components for the kdesu package.
-Group: Default
-
-%description abi
-abi components for the kdesu package.
-
 
 %package dev
 Summary: dev components for the kdesu package.
@@ -76,7 +68,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541878607
+export SOURCE_DATE_EPOCH=1542740487
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -84,7 +76,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541878607
+export SOURCE_DATE_EPOCH=1542740487
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesu
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kdesu/COPYING.LIB
@@ -97,10 +89,6 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libexec/kf5/kdesu_stub
 /usr/lib64/libexec/kf5/kdesud
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libKF5Su.so.5.52.0.abi
 
 %files dev
 %defattr(-,root,root,-)
