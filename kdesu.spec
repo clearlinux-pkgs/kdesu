@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdesu
-Version  : 5.55.0
-Release  : 13
-URL      : https://download.kde.org/stable/frameworks/5.55/kdesu-5.55.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.55/kdesu-5.55.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.55/kdesu-5.55.0.tar.xz.sig
+Version  : 5.56.0
+Release  : 14
+URL      : https://download.kde.org/stable/frameworks/5.56/kdesu-5.56.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.56/kdesu-5.56.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.56/kdesu-5.56.0.tar.xz.sig
 Summary  : Integration with su for elevated privileges
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -30,6 +30,7 @@ Summary: dev components for the kdesu package.
 Group: Development
 Requires: kdesu-lib = %{version}-%{release}
 Provides: kdesu-devel = %{version}-%{release}
+Requires: kdesu = %{version}-%{release}
 
 %description dev
 dev components for the kdesu package.
@@ -61,22 +62,23 @@ locales components for the kdesu package.
 
 
 %prep
-%setup -q -n kdesu-5.55.0
+%setup -q -n kdesu-5.56.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549737942
+export SOURCE_DATE_EPOCH=1552159379
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549737942
+export SOURCE_DATE_EPOCH=1552159379
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesu
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kdesu/COPYING.LIB
@@ -119,7 +121,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Su.so.5
-/usr/lib64/libKF5Su.so.5.55.0
+/usr/lib64/libKF5Su.so.5.56.0
 
 %files license
 %defattr(0644,root,root,0755)
