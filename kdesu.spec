@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdesu
-Version  : 5.66.0
-Release  : 26
-URL      : https://download.kde.org/stable/frameworks/5.66/kdesu-5.66.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.66/kdesu-5.66.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.66/kdesu-5.66.0.tar.xz.sig
+Version  : 5.67.0
+Release  : 27
+URL      : https://download.kde.org/stable/frameworks/5.67/kdesu-5.67.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.67/kdesu-5.67.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.67/kdesu-5.67.0.tar.xz.sig
 Summary  : Integration with su for elevated privileges
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -63,15 +63,15 @@ locales components for the kdesu package.
 
 
 %prep
-%setup -q -n kdesu-5.66.0
-cd %{_builddir}/kdesu-5.66.0
+%setup -q -n kdesu-5.67.0
+cd %{_builddir}/kdesu-5.67.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578965510
+export SOURCE_DATE_EPOCH=1581343064
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -88,10 +88,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1578965510
+export SOURCE_DATE_EPOCH=1581343064
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesu
-cp %{_builddir}/kdesu-5.66.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdesu/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kdesu-5.67.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdesu/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -131,7 +131,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Su.so.5
-/usr/lib64/libKF5Su.so.5.66.0
+/usr/lib64/libKF5Su.so.5.67.0
 
 %files license
 %defattr(0644,root,root,0755)
