@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdesu
-Version  : 5.69.0
-Release  : 29
-URL      : https://download.kde.org/stable/frameworks/5.69/kdesu-5.69.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.69/kdesu-5.69.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.69/kdesu-5.69.0.tar.xz.sig
+Version  : 5.70.0
+Release  : 30
+URL      : https://download.kde.org/stable/frameworks/5.70/kdesu-5.70.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.70/kdesu-5.70.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.70/kdesu-5.70.0.tar.xz.sig
 Summary  : Integration with su for elevated privileges
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -18,7 +18,13 @@ Requires: kdesu-license = %{version}-%{release}
 Requires: kdesu-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
+BuildRequires : kcoreaddons-dev
+BuildRequires : ki18n-dev
+BuildRequires : kpty-dev
+BuildRequires : kservice-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
+BuildRequires : qtbase-dev
 
 %description
 Maintainer: Adriaan de Groot <groot@kde.org>
@@ -30,7 +36,6 @@ Summary: dev components for the kdesu package.
 Group: Development
 Requires: kdesu-lib = %{version}-%{release}
 Provides: kdesu-devel = %{version}-%{release}
-Requires: kdesu = %{version}-%{release}
 Requires: kdesu = %{version}-%{release}
 
 %description dev
@@ -63,35 +68,34 @@ locales components for the kdesu package.
 
 
 %prep
-%setup -q -n kdesu-5.69.0
-cd %{_builddir}/kdesu-5.69.0
+%setup -q -n kdesu-5.70.0
+cd %{_builddir}/kdesu-5.70.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586898727
+export SOURCE_DATE_EPOCH=1589221505
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1586898727
+export SOURCE_DATE_EPOCH=1589221505
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesu
-cp %{_builddir}/kdesu-5.69.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdesu/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kdesu-5.70.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdesu/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -131,7 +135,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Su.so.5
-/usr/lib64/libKF5Su.so.5.69.0
+/usr/lib64/libKF5Su.so.5.70.0
 
 %files license
 %defattr(0644,root,root,0755)
