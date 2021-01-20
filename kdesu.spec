@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdesu
-Version  : 5.77.0
-Release  : 35
-URL      : https://download.kde.org/stable/frameworks/5.77/kdesu-5.77.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.77/kdesu-5.77.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.77/kdesu-5.77.0.tar.xz.sig
+Version  : 5.78.0
+Release  : 36
+URL      : https://download.kde.org/stable/frameworks/5.78/kdesu-5.78.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.78/kdesu-5.78.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.78/kdesu-5.78.0.tar.xz.sig
 Summary  : Integration with su for elevated privileges
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -79,15 +79,15 @@ locales components for the kdesu package.
 
 
 %prep
-%setup -q -n kdesu-5.77.0
-cd %{_builddir}/kdesu-5.77.0
+%setup -q -n kdesu-5.78.0
+cd %{_builddir}/kdesu-5.78.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1608155168
+export SOURCE_DATE_EPOCH=1611183235
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -103,15 +103,15 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1608155168
+export SOURCE_DATE_EPOCH=1611183235
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesu
-cp %{_builddir}/kdesu-5.77.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdesu/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/kdesu-5.77.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdesu/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kdesu-5.77.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kdesu/3c3d7573e137d48253731c975ecf90d74cfa9efe
-cp %{_builddir}/kdesu-5.77.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdesu/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/kdesu-5.77.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdesu/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kdesu-5.77.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdesu/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kdesu-5.78.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdesu/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/kdesu-5.78.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdesu/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kdesu-5.78.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kdesu/3c3d7573e137d48253731c975ecf90d74cfa9efe
+cp %{_builddir}/kdesu-5.78.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdesu/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/kdesu-5.78.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdesu/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kdesu-5.78.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdesu/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -155,7 +155,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Su.so.5
-/usr/lib64/libKF5Su.so.5.77.0
+/usr/lib64/libKF5Su.so.5.78.0
 
 %files license
 %defattr(0644,root,root,0755)
