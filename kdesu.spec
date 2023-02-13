@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdesu
-Version  : 5.102.0
-Release  : 58
-URL      : https://download.kde.org/stable/frameworks/5.102/kdesu-5.102.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.102/kdesu-5.102.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.102/kdesu-5.102.0.tar.xz.sig
+Version  : 5.103.0
+Release  : 59
+URL      : https://download.kde.org/stable/frameworks/5.103/kdesu-5.103.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.103/kdesu-5.103.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.103/kdesu-5.103.0.tar.xz.sig
 Summary  : Integration with su for elevated privileges
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -81,15 +81,15 @@ locales components for the kdesu package.
 
 
 %prep
-%setup -q -n kdesu-5.102.0
-cd %{_builddir}/kdesu-5.102.0
+%setup -q -n kdesu-5.103.0
+cd %{_builddir}/kdesu-5.103.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673895452
+export SOURCE_DATE_EPOCH=1676312632
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -105,7 +105,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1673895452
+export SOURCE_DATE_EPOCH=1676312632
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdesu
 cp %{_builddir}/kdesu-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kdesu/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
@@ -158,7 +158,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Su.so.5
-/usr/lib64/libKF5Su.so.5.102.0
+/usr/lib64/libKF5Su.so.5.103.0
 
 %files license
 %defattr(0644,root,root,0755)
